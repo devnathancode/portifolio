@@ -1,51 +1,374 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portifolio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header id="home">
-      <nav class="navs">
-        <a href="#index"> <i class="fi fi-brands-instagram"></i>Home </a>
-        <a href="#sobre"> Sobre </a>
-        <a href="#projetos"> Projetos </a>
-        <a href="#skills"> Skills </a>
-        <a href="#contatos"> Contatos </a>
-      </nav>
-      <img class="imgs" src="/imgs/instagram (1).png" alt="Ícone do Instagram" />
-    </header>
-    <section id="index">
-      <img class="imagem" src="/imgs/imagem.jpg" alt="imagem"> </img>
-      <h1 class="first"> Dev front-end
-      </h1>
-    </section>
-    <section id="sobre">
-      <h2>Sobre mim</h2>
-      <h3 class="sobrem">Meu nome é Nathanael, tenho 14 anos e moro em Santa Catarina. Desde cedo comecei a me interessar por tecnologia e desenvolvimento, o que me motivou a estudar programação e criar meus próprios projetos. Atualmente, estou focado em aprender cada vez mais sobre desenvolvimento web, tanto no front-end quanto no back-end.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathanael | Desenvolvedor Web</title>
+    <style>
+        /* Cores e Variáveis */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #f59e0b; /* Amarelo/Laranja Hamburgueria */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #10b981; /* Verde para botões de ação/sucesso */
+        }
 
-    Meu maior sonho é me tornar um desenvolvedor fullstack, capaz de criar aplicações completas e funcionais. Estou sempre buscando evoluir, praticando com projetos, aprendendo novas ferramentas e melhorando minhas habilidades todos os dias.
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    Sou dedicado, curioso e gosto de desafios, pois acredito que são eles que me fazem crescer como desenvolvedor e como pessoa.</h3>
-    </section>
-    <section id="projetos">
-      <h2 class="pjn">Projetos</h2>
-      <h3><a class="link" href="https://devnathancode.github.io/pagina-de-login/" target="_blank">Página de Login</a></h3>
-    </section>
-    <section id="skills">
-      <h2>Skills</h2>
-      <h3 class="skills"><li>HTML5 (estrutura de páginas, semântica)</li>
-      <li>CSS3 (layout, responsividade, Flexbox, Grid)</li>
-      <li>Responsividade (Mobile First)</li>
-      <li>Noções de UI/UX</li>
-      <li>Versionamento com Git </li></h3>
-    </section>
-    <section id="contatos">
-      <h2>Contatos</h2>
-      <h3 class="cont"><li>Email: nathanaelcastro640@gmail.com</li>
-      <li>GitHub: <a href="https://github.com/devnathancode" target="_blank">devnathancode</a></li></h3>
-    </section>
-  </body>
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Cabeçalho / Perfil */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        .profile-badge {
+            background-color: var(--primary);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        header h1 span {
+            color: var(--primary);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Seções */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        section h2::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background-color: #334155;
+        }
+
+        /* Habilidades */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Projetos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #334155;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .project-tag {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* Demonstração Interativa Interna */
+        .demo-box {
+            background-color: #0f172a;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px dashed #475569;
+        }
+
+        .demo-box h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .burger-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .burger-btn {
+            background-color: var(--primary);
+            color: #000;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .burger-btn:hover {
+            opacity: 0.9;
+        }
+
+        .cart-status {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        /* Contato */
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-item a {
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--card-bg);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            transition: all 0.2s;
+        }
+
+        .contact-item a:hover {
+            border-color: var(--accent);
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .contact-list { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Cabeçalho -->
+        <header>
+            <span class="profile-badge">14 Anos • Dev em Evolução</span>
+            <h1>Olá, eu sou o <span>Nathanael</span></h1>
+            <p>Desenvolvedor Frontend focado em criar soluções modernas e funcionais para negócios locais, especializado em sistemas de cardápios digitais para hamburguerias.</p>
+        </header>
+
+        <!-- Habilidades -->
+        <section id="habilidades">
+            <h2>Minhas Tecnologias</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>HTML5</h3>
+                    <p>Estrutura semântica</p>
+                </div>
+                <div class="skill-card">
+                    <h3>CSS3</h3>
+                    <p>Layouts e Estilização</p>
+                </div>
+                <div class="skill-card">
+                    <h3>JavaScript</h3>
+                    <p>Iniciando lógica e interações</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos -->
+        <section id="projetos">
+            <h2>Meu Principal Projeto</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <span class="project-tag">Case de Sucesso</span>
+                            <h3 style="margin-top: 5px;">Cardápio Digital para Hamburguerias</h3>
+                        </div>
+                    </div>
+                    <p>Desenvolvo sites focados na experiência do cliente: navegação rápida pelos hambúrgueres, seleção de adicionais e cálculo automático de carrinho usando conceitos reais de programação.</p>
+                    
+                    <!-- Demonstração Funcional Integrada no Portfólio -->
+                    <div class="demo-box">
+                        <h4>Teste o código do carrinho abaixo:</h4>
+                        
+                        <div class="burger-item">
+                            <div>
+                                <strong>Burguer Clássico</strong><br>
+                                <span style="color: var(--text-muted); font-size: 0.85rem;">R$ 25,00</span>
+                            </div>
+                            <button class="burger-btn" onclick="adicionarAoCarrinho('Burguer Clássico', 25)">+ Adicionar</button>
+                        </div>
+
+                        <div class="burger-item">
+                            <div>
+                                <strong>Monster Bacon</strong><br>
+                                <span style="color: var(--text-muted); font-size: 0.85rem;">R$ 32,00</span>
+                            </div>
+                            <button class="burger-btn" onclick="adicionarAoCarrinho('Monster Bacon', 32)">+ Adicionar</button>
+                        </div>
+
+                        <div class="cart-status">
+                            <span>Itens no Carrinho: <span id="qtd-itens">0</span></span>
+                            <span>Total: R$ <span id="total-preco">0,00</span></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato">
+            <h2>Vamos trabalhar juntos?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Se você tem uma hamburgueria ou restaurante e precisa de um site que vende sozinho, entre em contato!</p>
+                 <ul class="contact-list">
+            <li class="contact-item">
+                <a href="https://wa.me/5547992691247" target="_blank">
+                    🟢 WhatsApp Comercial
+                </a>
+            </li>
+            <li class="contact-item">
+                <a href="https://github.com" target="_blank">
+                    💻 Meu GitHub
+                </a>
+            </li>
+        </ul>
+
+        </section>
+
+        <!-- Rodapé -->
+        <footer>
+            <p>&copy; 2026 Nathanael. Desenvolvido com HTML, CSS e muito JavaScript.</p>
+        </footer>
+
+    </div>
+
+    <!-- Lógica em JavaScript -->
+    <script>
+        // Variáveis para controlar o estado do carrinho
+        let totalItens = 0;
+        let precoTotal = 0;
+
+        function adicionarAoCarrinho(nomeProduto, preco) {
+            // 1. Incrementa a quantidade de itens
+            totalItens = totalItens + 1;
+            
+            // 2. Soma o preço do produto ao total
+            precoTotal = precoTotal + preco;
+
+            // 3. Atualiza os elementos na tela (DOM)
+            document.getElementById('qtd-itens').innerText = totalItens;
+            document.getElementById('total-preco').innerText = precoTotal.toFixed(2).replace('.', ',');
+            
+            // 4. Um feedback simples no console para você estudar
+            console.log(`Adicionado: ${nomeProduto} - Novo total: R$ ${precoTotal}`);
+        }
+    </script>
+</body>
 </html>
